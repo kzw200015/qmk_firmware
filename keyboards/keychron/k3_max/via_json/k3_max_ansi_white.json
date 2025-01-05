@@ -19,7 +19,13 @@
     {"name": "Bluetooth Host 2", "title": "Bluetooth Host 2", "shortName": "BTH2"},
     {"name": "Bluetooth Host 3", "title": "Bluetooth Host 3", "shortName": "BTH3"},
     {"name": "2.4G", "title": "2.4G", "shortName": "2.4G"},
-    {"name": "Battery Level", "title": "Show battery level", "shortName": "Batt"}
+    {"name": "Battery Level", "title": "Show battery level", "shortName": "Batt"},
+    {"name": "OS Left Command", "title": "OS Left Command", "shortName": "OS_LCMD"},
+    {"name": "OS Right Command", "title": "OS Right Command", "shortName": "OS_RCMD"},
+    {"name": "OS Left Option", "title": "OS Left Option", "shortName": "OS_LOPT"},
+    {"name": "OS Right Option", "title": "OS Right Option", "shortName": "OS_ROPT"},
+    {"name": "OS Left Control", "title": "OS Left Control", "shortName": "OS_LCTL"},
+    {"name": "OS Right Control", "title": "OS Right Control", "shortName": "OS_RCTL"}
   ],
   "matrix": {"rows": 6, "cols" : 16},
   "layouts": {

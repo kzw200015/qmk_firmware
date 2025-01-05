@@ -16,6 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "keychron_common.h"
+#include "os_detection.h"
 
 enum layers {
     MAC_BASE,
@@ -63,6 +64,147 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_keychron_common(keycode, record)) {
         return false;
+    }
+
+    switch (keycode) {
+        case OS_LCMD:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        register_code(KC_LCMD);
+                        break;
+                    default:
+                        register_code(KC_LCTL);
+                        break;
+                }
+            } else {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        unregister_code(KC_LCMD);
+                        break;
+                    default:
+                        unregister_code(KC_LCTL);
+                        break;
+                }
+            }
+            return false;
+        case OS_RCMD:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        register_code(KC_RCMD);
+                        break;
+                    default:
+                        register_code(KC_RCTL);
+                        break;
+                }
+            } else {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        unregister_code(KC_RCMD);
+                        break;
+                    default:
+                        unregister_code(KC_RCTL);
+                        break;
+                }
+            }
+            return false;
+        case OS_LOPT:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        register_code(KC_LOPT);
+                        break;
+                    default:
+                        register_code(KC_LALT);
+                        break;
+                }
+            } else {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        unregister_code(KC_LOPT);
+                        break;
+                    default:
+                        unregister_code(KC_LALT);
+                        break;
+                }
+            }
+            return false;
+        case OS_ROPT:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        register_code(KC_ROPT);
+                        break;
+                    default:
+                        register_code(KC_RALT);
+                        break;
+                }
+            } else {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        unregister_code(KC_ROPT);
+                        break;
+                    default:
+                        unregister_code(KC_RALT);
+                        break;
+                }
+            }
+            return false;
+        case OS_LCTL:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        register_code(KC_LCTL);
+                        break;
+                    default:
+                        register_code(KC_LGUI); // Windows 下为 Win 键
+                        break;
+                }
+            } else {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        unregister_code(KC_LCTL);
+                        break;
+                    default:
+                        unregister_code(KC_LGUI);
+                        break;
+                }
+            }
+            return false;
+        case OS_RCTL:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        register_code(KC_RCTL);
+                        break;
+                    default:
+                        register_code(KC_RGUI); // Windows 下为 Win 键
+                        break;
+                }
+            } else {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                    case OS_IOS:
+                        unregister_code(KC_RCTL);
+                        break;
+                    default:
+                        unregister_code(KC_RGUI);
+                        break;
+                }
+            }
+            return false;
     }
     return true;
 }

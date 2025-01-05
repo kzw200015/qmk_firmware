@@ -55,6 +55,12 @@ enum {
     PROF2,
     PROF3,
 #endif
+    OS_LCMD,
+    OS_RCMD,
+    OS_LOPT,
+    OS_ROPT,
+    OS_LCTL,
+    OS_RCTL,
     NEW_SAFE_RANGE,
 };
 
